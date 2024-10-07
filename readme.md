@@ -10,6 +10,8 @@ If you stuck ask a question or check **completed** branch
    1) 🔥 provide one line solution for each method
 3) Test your implementation with [CircularListTest](src/test/java/kt/tuesday/warmup/CircularListTest.java)
 
+### Circular list visualisation
+![circularList.png](circularList.png)
 
 ### Assignment 
 1) Go to [ArrayQueue.java](src%2Fmain%2Fjava%2Fkt%2Ftuesday%2Ftask%2FArrayQueue.java)
