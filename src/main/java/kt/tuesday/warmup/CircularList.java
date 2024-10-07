@@ -1,5 +1,7 @@
 package kt.tuesday.warmup;
 
+import kt.tuesday.exception.TaskNotCompletedException;
+
 /**
  * Your task is implement circular list
  * Circular list is an array with a pointer
@@ -14,19 +16,15 @@ package kt.tuesday.warmup;
  */
 public class CircularList<T> {
 
-    final private T[] elements;
-    private int index = -1;
-
     public CircularList(final T... elements) {
-        this.elements = elements;
 
     }
 
     T next() {
-        return elements[(++index + elements.length) % elements.length];
+        throw new TaskNotCompletedException();
     }
 
     T previous() {
-        return elements[(index-- + elements.length) % elements.length];
+        throw new TaskNotCompletedException();
     }
 }

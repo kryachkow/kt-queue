@@ -1,11 +1,10 @@
 package kt.tuesday.task;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import kt.tuesday.exception.TaskNotCompletedException;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Queue;
 
 /**
@@ -16,10 +15,7 @@ import java.util.Queue;
  * Null objects are prohibited for this queue.
  */
 public class ArrayQueue<T> implements Queue<T> {
-    private Object[] elements;
-    private int head = 0;
-    private int tail = 0;
-    private int size = 0;
+    private final Object[] elements;
 
     /**
      * Constructs an empty array queue with an initial capacity.
@@ -28,7 +24,7 @@ public class ArrayQueue<T> implements Queue<T> {
      * @param initialCapacity the initial capacity of the queue
      */
     public ArrayQueue(int initialCapacity) {
-        this.elements = new Object[initialCapacity];
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -39,7 +35,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public int size() {
-        return size;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -50,7 +46,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean isEmpty() {
-        return head == tail;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -62,13 +58,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean contains(Object o) {
-        if (o == null) return false;
-        for (int i = head; i != tail; i = (i + 1) % elements.length) {
-            if (o.equals(elements[i])) {
-                return true;
-            }
-        }
-        return false;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -78,10 +68,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public void clear() {
-        Arrays.fill(elements, null);
-        head = 0;
-        tail = 0;
-        size = 0;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -96,12 +83,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean add(T t) {
-        Objects.requireNonNull(t);
-        elements[tail] = t;
-        tail = (tail + 1) % elements.length;
-        size++;
-        if (size == elements.length) doubleCapacity();
-        return true;
+        throw new TaskNotCompletedException();
     }
 
 
@@ -115,11 +97,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean offer(T t) {
-        try {
-            return add(t);
-        } catch (NullPointerException e) {
-            return false;
-        }
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -131,12 +109,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public T remove() {
-        if (isEmpty()) throw new NoSuchElementException();
-        T element = (T) elements[head];
-        elements[head] = null;
-        head = (head + 1) % elements.length;
-        size--;
-        return element;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -147,12 +120,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public T poll() {
-        if (isEmpty()) return null;
-        T element = (T) elements[head];
-        elements[head] = null;
-        head = (head + 1) % elements.length;
-        size--;
-        return element;
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -164,8 +132,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public T element() {
-        if (isEmpty()) throw new NoSuchElementException();
-        return (T) elements[head];
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -176,8 +143,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public T peek() {
-        if (isEmpty()) return null;
-        return (T) elements[head];
+        throw new TaskNotCompletedException();
     }
 
     /**
@@ -194,17 +160,7 @@ public class ArrayQueue<T> implements Queue<T> {
      * 6) Set the tail index to the size of the queue (the number of elements), which is the position where the next element will be added.
      */
     private void doubleCapacity() {
-        int newCapacity = elements.length * 2;
-        Object[] newArray = new Object[newCapacity];
-        if (head < tail) {
-            System.arraycopy(elements, head, newArray, 0, size);
-        } else {
-            System.arraycopy(elements, head, newArray, 0, elements.length - head);
-            System.arraycopy(elements, 0, newArray, elements.length - head, tail);
-        }
-        elements = newArray;
-        head = 0;
-        tail = size;
+        throw new TaskNotCompletedException();
     }
 
 
@@ -213,127 +169,41 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public boolean remove(Object o) {
-        for (int i = head; i != tail; i = (i + 1) % elements.length) {
-            if (o.equals(elements[i])) {
-
-                for (int j = i; j != tail; j = (j + 1) % elements.length) {
-                    elements[j] = elements[(j + 1) % elements.length];
-                }
-                tail = (tail - 1 + elements.length) % elements.length;
-                elements[tail] = null;
-                size--;
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        for (Object e : c) {
-            if (!contains(e)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        boolean modified = false;
-        for (T e : c) {
-            if (add(e)) {
-                modified = true;
-            }
-        }
-        return modified;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        boolean modified = false;
-        for (Object e : c) {
-            if (remove(e)) {
-                modified = true;
-            }
-        }
-        return modified;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Object[] toArray() {
-        int size = size();
-        Object[] result = new Object[size];
-        for (int i = 0; i < size; i++) {
-            result[i] = elements[(head + i) % elements.length];
-        }
-        return result;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        int size = size();
-        if (a.length < size) {
-            a = (T1[]) Array.newInstance(a.getClass().getComponentType(), size);
-        }
-        for (int i = 0; i < size; i++) {
-            a[i] = (T1) elements[(head + i) % elements.length];
-        }
-        if (a.length > size) {
-            a[size] = null;
-        }
-        return a;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            private int index = head;
-            private boolean canRemove = false;
-
-            @Override
-            public boolean hasNext() {
-                return index != tail;
-            }
-
-            @Override
-            public T next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                T element = (T) elements[index];
-                index = (index + 1) % elements.length;
-                canRemove = true;
-                return element;
-            }
-
-            @Override
-            public void remove() {
-                if (!canRemove) {
-                    throw new IllegalStateException();
-                }
-                index = (index - 1 + elements.length) % elements.length;
-                int i = index;
-                while (i != tail) {
-                    elements[i] = elements[(i + 1) % elements.length];
-                    i = (i + 1) % elements.length;
-                }
-                elements[tail] = null;
-                tail = (tail - 1 + elements.length) % elements.length;
-                size--;
-                canRemove = false;
-            }
-        };
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        boolean modified = false;
-        Iterator<T> it = iterator();
-        while (it.hasNext()) {
-            if (!c.contains(it.next())) {
-                it.remove();
-                modified = true;
-            }
-        }
-        return modified;
+        throw new UnsupportedOperationException();
     }
 }
