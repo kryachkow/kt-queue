@@ -18,6 +18,23 @@ public class ArrayQueue<T> implements Queue<T> {
     private final Object[] elements;
 
     /**
+     * Doubles the capacity of the queue's internal array.
+     * This method is called when the queue is full and needs to grow.
+     * <p>
+     * 1) Create a new array with twice the capacity of the current array.</li>
+     * 2) If the head index is less than the tail index, copy all elements from the head index to the tail index from the old array to the new array.
+     * 3) If the head index is greater than or equal to the tail index, copy the elements in two parts:
+     * a) Copy the elements from the head index to the end of the old array to the start of the new array.
+     * b) Copy the elements from the start of the old array to the tail index to the new array, starting from the position after the last copied element.
+     * 4) Replace the old array with the new array.
+     * 5) Reset the head index to 0.
+     * 6) Set the tail index to the size of the queue (the number of elements), which is the position where the next element will be added.
+     */
+    private void doubleCapacity() {
+        throw new TaskNotCompletedException();
+    }
+
+    /**
      * Constructs an empty array queue with an initial capacity.
      * The capacity is the length of the internal array used to store elements.
      *
@@ -145,24 +162,6 @@ public class ArrayQueue<T> implements Queue<T> {
     public T peek() {
         throw new TaskNotCompletedException();
     }
-
-    /**
-     * Doubles the capacity of the queue's internal array.
-     * This method is called when the queue is full and needs to grow.
-     * <p>
-     * 1) Create a new array with twice the capacity of the current array.</li>
-     * 2) If the head index is less than the tail index, copy all elements from the head index to the tail index from the old array to the new array.
-     * 3) If the head index is greater than or equal to the tail index, copy the elements in two parts:
-     * a) Copy the elements from the head index to the end of the old array to the start of the new array.
-     * b) Copy the elements from the start of the old array to the tail index to the new array, starting from the position after the last copied element.
-     * 4) Replace the old array with the new array.
-     * 5) Reset the head index to 0.
-     * 6) Set the tail index to the size of the queue (the number of elements), which is the position where the next element will be added.
-     */
-    private void doubleCapacity() {
-        throw new TaskNotCompletedException();
-    }
-
 
     // The following methods are not implemented and will throw an UnsupportedOperationException
     // If you finished task early you can implement this as an extra mile
