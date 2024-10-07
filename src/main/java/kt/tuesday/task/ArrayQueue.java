@@ -15,7 +15,18 @@ import java.util.Queue;
  * Null objects are prohibited for this queue.
  */
 public class ArrayQueue<T> implements Queue<T> {
+
     private final Object[] elements;
+
+    /**
+     * Constructs an empty array queue with an initial capacity.
+     * The capacity is the length of the internal array used to store elements.
+     *
+     * @param initialCapacity the initial capacity of the queue
+     */
+    public ArrayQueue(int initialCapacity) {
+        throw new TaskNotCompletedException();
+    }
 
     /**
      * Doubles the capacity of the queue's internal array.
@@ -31,16 +42,6 @@ public class ArrayQueue<T> implements Queue<T> {
      * 6) Set the tail index to the size of the queue (the number of elements), which is the position where the next element will be added.
      */
     private void doubleCapacity() {
-        throw new TaskNotCompletedException();
-    }
-
-    /**
-     * Constructs an empty array queue with an initial capacity.
-     * The capacity is the length of the internal array used to store elements.
-     *
-     * @param initialCapacity the initial capacity of the queue
-     */
-    public ArrayQueue(int initialCapacity) {
         throw new TaskNotCompletedException();
     }
 
