@@ -44,7 +44,7 @@ class CircularListTest {
         assertEquals(4, ys.previous());
         assertEquals(3, ys.previous());
         assertEquals(2, ys.previous());
-        assertEquals(2, ys.previous());
+        assertEquals(1, ys.previous());
 
 
 
