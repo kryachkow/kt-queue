@@ -1,5 +1,9 @@
 package kt.tuesday.warmup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Your task is implement circular list
  * Circular list is an array with a pointer
@@ -23,10 +27,13 @@ public class CircularList<T> {
     }
 
     T next() {
-        return elements[(++index + elements.length) % elements.length];
+        index = (++index + elements.length) % elements.length;
+        return elements[index];
     }
 
     T previous() {
-        return elements[(index-- + elements.length) % elements.length];
+        T elem = elements[(index-- + elements.length) % elements.length];
+        index = (index + elements.length) % elements.length;
+        return elem;
     }
 }
