@@ -1,4 +1,4 @@
-package kt.tuesday.exception;
+package kt.exception;
 
 public class TaskNotCompletedException extends RuntimeException {
 }
