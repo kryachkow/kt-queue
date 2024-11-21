@@ -181,6 +181,6 @@ class ArrayQueueTest {
 
         Field elements = queue.getClass().getDeclaredField("elements");
         elements.setAccessible(true);
-        assertEquals(4, ((Object[]) elements.get(queue)).length);
+        assertEquals(8, ((Object[]) elements.get(queue)).length);
     }
 }

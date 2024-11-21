@@ -101,7 +101,7 @@ public class ArrayQueue<T> implements Queue<T> {
         elements[tail] = t;
         tail = (tail + 1) % elements.length;
         size++;
-        if (size == elements.length) doubleCapacity();
+        if (size + 1 == elements.length) doubleCapacity();
         return true;
     }
 
