@@ -56,6 +56,7 @@ public class ArrayQueue<T> implements Queue<T> {
     /**
      * Returns true if this queue contains the specified element.
      * This method iterates over the elements in the queue, comparing each element with the given object.
+     * Hint: use iteration through i = (i + 1) % elements.length
      *
      * @param o element whose presence in this queue is to be tested
      * @return true if this queue contains the specified element
@@ -87,7 +88,7 @@ public class ArrayQueue<T> implements Queue<T> {
     /**
      * Inserts the specified element into this queue.
      * The element is inserted at the tail of the queue.
-     * The tail pointer is then moved one position to the right, wrapping around to the start of the array if necessary.
+     * The tail pointer is then moved one position to the right, wrapping around to the start of the array (using "%elements.length")if necessary.
      * If the queue is full (head equals tail), the capacity of the queue is doubled.
      *
      * @param t the element to add
@@ -124,7 +125,8 @@ public class ArrayQueue<T> implements Queue<T> {
 
     /**
      * Retrieves and removes the head of this queue.
-     * This is achieved by storing the element at the head position, setting that position to null, and moving the head pointer one position to the right.
+     * This is achieved by storing the element at the head position,
+     * setting that position to null, and moving the head pointer one position to the right(using "% elements.length").
      *
      * @return the head of the queue
      * @throws NoSuchElementException if this queue is empty
@@ -141,7 +143,8 @@ public class ArrayQueue<T> implements Queue<T> {
 
     /**
      * Retrieves and removes the head of this queue, or returns null if this queue is empty.
-     * This is achieved by storing the element at the head position, setting that position to null, and moving the head pointer one position to the right.
+     * This is achieved by storing the element at the head position, setting that position to null
+     * , and moving the head pointer one position to the right(using "% elements.length").
      *
      * @return the head of the queue, or null if this queue is empty
      */
