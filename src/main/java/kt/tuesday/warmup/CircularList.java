@@ -1,5 +1,7 @@
 package kt.tuesday.warmup;
 
+import kt.exception.TaskNotCompletedException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,18 +24,14 @@ public class CircularList<T> {
     private int index = -1;
 
     public CircularList(final T... elements) {
-        this.elements = elements;
-
+        throw new TaskNotCompletedException();
     }
 
     T next() {
-        index = (++index + elements.length) % elements.length;
-        return elements[index];
+        throw new TaskNotCompletedException();
     }
 
     T previous() {
-        T elem = elements[(index-- + elements.length) % elements.length];
-        index = (index + elements.length) % elements.length;
-        return elem;
+        throw new TaskNotCompletedException();
     }
 }
