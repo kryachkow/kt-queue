@@ -35,7 +35,6 @@ If you stuck ask a question or check **completed** branch
 
 1) Go to [CircularList](src/main/java/kt/tuesday/warmup/CircularList.java)
 2) Implement 2 methods and constructor without using collection API
-    1) 🔥 provide one line solution for each method
 3) Test your implementation with [CircularListTest](src/test/java/kt/tuesday/warmup/CircularListTest.java)
 
 ### Circular list visualisation
